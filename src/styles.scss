@@ -2,6 +2,7 @@
 /* Variables */
 $primary-color: #7003B0;
 $second-color: #2b66c0;
+$third-color: #01A0CD;
 $white-color: #FFFFFF;
 $container-padding: 15px;
 
@@ -108,6 +109,15 @@ section {
 }
 .table-striped tbody tr:nth-of-type(even) {
   background-color: #D6F7FE !important;
+}
+
+//  BOTONES
+.btn-primary {
+  background: linear-gradient(90deg, $primary-color 0%, $third-color 100%) !important;
+  border-radius: 40px !important;
+  padding: 0 50px !important;
+  height: 30px;
+  border-color: $primary-color;
 }
 
 /* Importing Bootstrap SCSS file. */
