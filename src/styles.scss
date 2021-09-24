@@ -1,3 +1,4 @@
+
 /* Variables */
 $primary-color: #7003B0;
 $second-color: #2b66c0;
@@ -19,6 +20,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+  width: 100%;
 }
 
 h1,
@@ -57,8 +59,8 @@ p {
 
 section {
   &#main-content {
-    padding: $container-padding;
-    height: 100%;
+    width: 100%;
+    display: flex;
   }
 }
 
@@ -67,7 +69,46 @@ section {
   margin-right: auto;
   margin-left: 0;
   width: 100%;
-  max-width: 1500px;
   min-height: 100%;
   position: relative;
 }
+
+.card {
+  border-radius: 5px;
+  border: 1px solid $primary-color !important;
+  background-color: #FFFFFF;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  width: 100%;
+  max-width: 1500px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 0 5px 18px 5px rgba(112,3,176,0.41);
+  box-shadow: 0 5px 25px 5px rgba(112,3,176,0.41);
+}
+
+.p-15 {
+  padding: $container-padding;
+}
+
+//  ESTILOS PARA LAS TABLAS
+.table th, .table td {
+  border: 0 solid black !important;
+}
+.table tbody tr {
+  border-radius: 5px !important;
+  border-top: 10px solid #FFF;
+  border-bottom: 10px solid #FFF;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #E5D7F0 !important;
+}
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #D6F7FE !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
