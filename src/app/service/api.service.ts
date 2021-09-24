@@ -9,7 +9,8 @@ export class ApiService {
     .append('Content-Type', 'application/json')
     .append('user', 'User123')
     .append('password', 'Password123');
-  private baseUrl: string = environment.production ? environment.api_url : 'api';
+  // private baseUrl: string = environment.production ? environment.api_url : 'api';
+  private baseUrl: string = 'api'
 
   constructor(private httpClient: HttpClient) {
   }
