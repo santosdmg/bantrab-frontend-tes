@@ -4,6 +4,8 @@ $primary-color: #7003B0;
 $second-color: #2b66c0;
 $third-color: #01A0CD;
 $white-color: #FFFFFF;
+$color-error: #FF0000;
+$controls-color: #636363;
 $container-padding: 15px;
 
 /* ESTILOS GLOBALES */
@@ -86,8 +88,8 @@ section {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  -webkit-box-shadow: 0 5px 18px 5px rgba(112,3,176,0.41);
-  box-shadow: 0 5px 25px 5px rgba(112,3,176,0.41);
+  -webkit-box-shadow: 0 5px 10px -1px rgba(112,3,176,0.41);
+  box-shadow: 0 5px 10px -1px rgba(112,3,176,0.41);
 }
 
 .p-15 {
@@ -118,6 +120,37 @@ section {
   padding: 0 50px !important;
   height: 30px;
   border-color: $primary-color;
+}
+
+//  TEXTOS
+
+.title-text {
+  color: #431D71 !important;
+}
+
+.form-error {
+  margin: 2px 0 0 0;
+  color: $color-error;
+  position: absolute;
+}
+.error-text {
+  font-size: 12px;
+  margin: 0;
+}
+
+//  FORMULARIOS
+.form-group{
+  margin-bottom: 15px !important;
+}
+
+input {
+  &.form-control {
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    padding: 6px 12px !important;
+    color: $controls-color !important;
+    border: 1.5px solid #D3CCD4;
+  }
 }
 
 /* Importing Bootstrap SCSS file. */
