@@ -78,7 +78,8 @@
               "browserTarget": "bantrab-frontend-test:build:production"
             },
             "development": {
-              "browserTarget": "bantrab-frontend-test:build:development"
+              "browserTarget": "bantrab-frontend-test:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
