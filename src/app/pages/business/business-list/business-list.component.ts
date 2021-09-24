@@ -17,6 +17,7 @@ export class BusinessListComponent implements OnInit {
   getBussiness() {
     this.apiService.get('empresas').subscribe((response) => {
       console.log('RESP: ', response)
+      this.business = response;
     }, error => {
       console.log('ERROR: ',error)
     })
