@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  API_BANTRAB: 'https://apitest-bt.herokuapp.com/api/v1',
 };
