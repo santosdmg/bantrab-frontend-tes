@@ -1,8 +1,15 @@
 <div id='business-list'>
   <div class="card p-0 mb-4">
-    <div class="title-container w-100 gradient-h py-2 pl-5 pr-2 mt-4">
-      <h4 class='text-left text-white font-weight-bold m-0'>Gestion de empresas</h4>
-      <h6 class='text-left text-white m-0'>Agrega, edita o elimina</h6>
+    <div class="title-container w-100 py-2 mt-4 pr-5">
+      <div class="pl-5 gradient-h w-100 d-flex align-items-center">
+        <div class="flex-grow-1">
+          <h4 class='text-left text-white font-weight-bold m-0'>Gestión de empresas</h4>
+          <h6 class='text-left text-white m-0'>Agrega, edita o elimina</h6>
+        </div>
+        <div class="pr-1">
+          <button class="btn btn-primary font-weight-bold" (click)="gotToAddBussines()">Agregar</button>
+        </div>
+      </div>
     </div>
 
     <div class="mt-4 w-100 px-5">

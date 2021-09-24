@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../../service/api.service";
 
@@ -8,7 +9,7 @@ import {ApiService} from "../../../service/api.service";
 })
 export class BusinessListComponent implements OnInit {
   business: any[] = [];
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.getBussiness();
@@ -21,6 +22,10 @@ export class BusinessListComponent implements OnInit {
     }, error => {
       console.log('ERROR: ',error)
     })
+  }
+
+  gotToAddBussines() {
+    this.router.navigateByUrl('business/create');
   }
 
 }
