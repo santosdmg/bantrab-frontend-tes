@@ -10,12 +10,14 @@ import { BusinessListComponent } from './pages/business/business-list/business-l
 import {ApiService} from "./service/api.service";
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BusinessCreateEditComponent } from './pages/business/business-create-edit/business-create-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     BusinessListComponent,
+    BusinessCreateEditComponent,
   ],
   imports: [
     BrowserModule,
