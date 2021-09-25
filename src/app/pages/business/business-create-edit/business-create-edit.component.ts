@@ -1,7 +1,8 @@
+import Swal from 'sweetalert2';
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import {ApiService} from "../../../service/api.service";
 import {Router, ActivatedRoute} from "@angular/router";
+import {FormControl, FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'app-business-create-edit',
@@ -80,16 +81,39 @@ export class BusinessCreateEditComponent implements OnInit {
     }else {
       if(this.companyId) {
         this.apiService.put(`empresas/${this.companyId}`, this.form.value).subscribe((response) => {
-          console.log('RESPONSE', response)
-          this.router.navigateByUrl('business');
+          if(response) {
+            Swal.fire(
+              'Éxito',
+              'La empresa fue editada exitosamente.',
+              'success'
+            )
+            this.router.navigateByUrl('business');
+          }
         }, error => {
+          Swal.fire(
+            'Error',
+            'No fue posible editar la empresa.)',
+            'error'
+          )
           console.log('ERROR AL CREAR LA EMPRESA: ', error)
         })
       }else {
         this.apiService.post('empresas', this.form.value).subscribe((response) => {
           console.log('RESPONSE', response)
-          this.router.navigateByUrl('business');
+          if (response) {
+            Swal.fire(
+              'Éxito',
+              'La empresa fue creada exitosamente.',
+              'success'
+            )
+            this.router.navigateByUrl('business');
+          }
         }, error => {
+          Swal.fire(
+            'Error',
+            'No fue posible crear la empresa.)',
+            'error'
+          )
           console.log('ERROR AL CREAR LA EMPRESA: ', error)
         })
       }
