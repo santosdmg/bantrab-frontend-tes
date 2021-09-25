@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment'
 
 @Injectable()
 export class ApiService {
@@ -25,5 +24,11 @@ export class ApiService {
     const finalUrl = `${this.baseUrl}/${url}/`;
 
     return this.httpClient.post(finalUrl, data, {headers: this.headers});
+  }
+
+  public put(url: string, data: any): Observable<any> {
+    const finalUrl = `${this.baseUrl}/${url}/`;
+
+    return this.httpClient.put(finalUrl, data, {headers: this.headers});
   }
 }
