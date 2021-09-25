@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class ApiService {
@@ -8,7 +9,8 @@ export class ApiService {
     .append('Content-Type', 'application/json')
     .append('user', 'User123')
     .append('password', 'Password123');
-  private baseUrl: string = 'api';
+  // private baseUrl: string = environment.production ? environment.api_url : 'api';
+  private baseUrl: string = 'api'
 
   constructor(private httpClient: HttpClient) {
   }
