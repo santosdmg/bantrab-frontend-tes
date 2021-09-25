@@ -75,7 +75,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bantrab-frontend-test:build:production"
+              "browserTarget": "bantrab-frontend-test:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "bantrab-frontend-test:build:development",
@@ -107,6 +108,10 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
