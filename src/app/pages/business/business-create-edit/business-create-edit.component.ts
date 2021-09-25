@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import {ApiService} from "../../../service/api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-business-create-edit',
@@ -19,7 +21,7 @@ export class BusinessCreateEditComponent implements OnInit {
   submitted: boolean = false;
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -49,9 +51,20 @@ export class BusinessCreateEditComponent implements OnInit {
         }
       });
       return;
+    }else {
+      this.apiService.post('empresas', this.form.value).subscribe((response) => {
+        console.log('RESPONSE', response)
+        this.router.navigateByUrl('business');
+      }, error => {
+        console.log('ERROR AL CREAR LA EMPRESA: ', error)
+      })
     }
 
     console.log(JSON.stringify(this.form.value, null, 2));
+  }
+
+  goBack() {
+    this.router.navigateByUrl('business');
   }
 
 }
