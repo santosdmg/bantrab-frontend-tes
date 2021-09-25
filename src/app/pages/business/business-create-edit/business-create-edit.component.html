@@ -4,11 +4,17 @@
       <div class="title-container w-100 py-2 mt-4 pr-5">
         <div class="pl-5 w-100 d-flex align-items-center">
           <div class="flex-grow-1">
-            <h4 class='text-left title-text font-weight-bold m-0'>Crear empresa</h4>
-            <h6 class='text-left title-text m-0'>Ingresa los datos de la empresa</h6>
+            <h4 class='text-left title-text font-weight-bold m-0'>
+              <span *ngIf="companyId==null">Crear </span>
+              <span *ngIf="companyId!=null">Editar </span>
+              empresa
+            </h4>
+            <h6 *ngIf="companyId==null" class='text-left title-text m-0'>Utiliza los campos para agregar los datos</h6>
+            <h6 *ngIf="companyId!=null" class='text-left title-text m-0'>Utiliza los campos para actualizar los datos</h6>
+
           </div>
           <div class="pr-1">
-            <button class="btn btn-primary font-weight-bold mr-3" type="button">Cancelar</button>
+            <button class="btn btn-primary font-weight-bold mr-3" type="button" (click)="goBack()">Cancelar</button>
             <button class="btn btn-primary font-weight-bold" type="submit">Guardar</button>
           </div>
         </div>
@@ -18,49 +24,49 @@
         <div class="row">
           <div class="col-6 form-group">
             <label>Nombre Comercial</label>
-            <input (change)="removeFormControlError($event, form.controls['nombre_comercial'])" id="nombre_comercial" name="nombre_comercial"
+            <input (change)="removeFormControlError($event, form.controls['nombre_comercial'])" id="nombre_comercial" formControlName="nombre_comercial"
                    class="form-control" autofocus="" [ngClass]="{ 'is-invalid': submitted && f.nombre_comercial.errors }">
             <control-messages [control]="form.controls['nombre_comercial']">
             </control-messages>
           </div>
           <div class="col-6 form-group">
             <label>Razon Social</label>
-            <input (change)="removeFormControlError($event, form.controls['razon_social'])" id="razon_social" name="razon_social"
+            <input (change)="removeFormControlError($event, form.controls['razon_social'])" id="razon_social" formControlName="razon_social"
                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.razon_social.errors }">
             <control-messages [control]="form.controls['razon_social']">
             </control-messages>
           </div>
           <div class="col-6 form-group">
             <label>Telefono</label>
-            <input (change)="removeFormControlError($event, form.controls['telefono'])" id="telefono" name="telefono"
+            <input (change)="removeFormControlError($event, form.controls['telefono'])" id="telefono" formControlName="telefono"
                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }">
             <control-messages [control]="form.controls['telefono']">
             </control-messages>
           </div>
           <div class="col-6 form-group">
             <label>Correo Electronico</label>
-            <input (change)="removeFormControlError($event, form.controls['correo'])" id="correo" name="correo"
+            <input (change)="removeFormControlError($event, form.controls['correo'])" id="correo" formControlName="correo"
                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }">
             <control-messages [control]="form.controls['correo']">
             </control-messages>
           </div>
           <div class="col-6 form-group">
             <label>Nit</label>
-            <input (change)="removeFormControlError($event, form.controls['nit'])" id="nit" name="nit"
+            <input (change)="removeFormControlError($event, form.controls['nit'])" id="nit" formControlName="nit"
                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nit.errors }">
             <control-messages [control]="form.controls['nit']">
             </control-messages>
           </div>
           <div class="col-6 form-group">
             <label>Estado</label>
-            <input (change)="removeFormControlError($event, form.controls['estado'])" id="estado" name="estado"
+            <input (change)="removeFormControlError($event, form.controls['estado'])" id="estado" formControlName="estado"
                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.estado.errors }">
             <control-messages [control]="form.controls['estado']">
             </control-messages>
           </div>
           <div class="col-12 form-group">
             <label>Direccion</label>
-            <input (change)="removeFormControlError($event, form.controls['direccion'])" id="direccion" name="direccion"
+            <input (change)="removeFormControlError($event, form.controls['direccion'])" id="direccion" formControlName="direccion"
                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }">
             <control-messages [control]="form.controls['direccion']">
             </control-messages>
