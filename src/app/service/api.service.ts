@@ -18,4 +18,10 @@ export class ApiService {
 
     return this.httpClient.get(finalUrl, {headers: this.headers});
   }
+
+  public post(url: string, data: any): Observable<any> {
+    const finalUrl = `${this.baseUrl}/${url}/`;
+
+    return this.httpClient.post(finalUrl, data, {headers: this.headers});
+  }
 }
