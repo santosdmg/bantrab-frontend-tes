@@ -12,10 +12,10 @@ export class BusinessListComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getBussiness();
+    this.getBusiness();
   }
 
-  getBussiness() {
+  getBusiness() {
     this.apiService.get('empresas').subscribe((response) => {
       console.log('RESP: ', response)
       this.business = response;
@@ -24,8 +24,12 @@ export class BusinessListComponent implements OnInit {
     })
   }
 
-  gotToAddBussines() {
+  gotToAddBusiness() {
     this.router.navigateByUrl('business/create');
+  }
+
+  goToEditBusiness(id: number) {
+    this.router.navigateByUrl(`business/${id}/edit`);
   }
 
 }

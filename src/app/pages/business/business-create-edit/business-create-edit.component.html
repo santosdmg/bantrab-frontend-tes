@@ -4,8 +4,14 @@
       <div class="title-container w-100 py-2 mt-4 pr-5">
         <div class="pl-5 w-100 d-flex align-items-center">
           <div class="flex-grow-1">
-            <h4 class='text-left title-text font-weight-bold m-0'>Crear empresa</h4>
-            <h6 class='text-left title-text m-0'>Ingresa los datos de la empresa</h6>
+            <h4 class='text-left title-text font-weight-bold m-0'>
+              <span *ngIf="companyId==null">Crear </span>
+              <span *ngIf="companyId!=null">Editar </span>
+              empresa
+            </h4>
+            <h6 *ngIf="companyId==null" class='text-left title-text m-0'>Utiliza los campos para agregar los datos</h6>
+            <h6 *ngIf="companyId!=null" class='text-left title-text m-0'>Utiliza los campos para actualizar los datos</h6>
+
           </div>
           <div class="pr-1">
             <button class="btn btn-primary font-weight-bold mr-3" type="button" (click)="goBack()">Cancelar</button>

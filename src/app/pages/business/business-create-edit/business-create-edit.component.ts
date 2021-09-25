@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import {ApiService} from "../../../service/api.service";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-business-create-edit',
@@ -19,12 +19,38 @@ export class BusinessCreateEditComponent implements OnInit {
     direccion: ['', Validators.required],
   });
   submitted: boolean = false;
+  companyId: any = null
 
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private apiService: ApiService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
+    this.companyId = this.activatedRoute.snapshot.params?.id;
+    if(this.companyId) {
+      this.getCompany(this.companyId);
+    }
   }
 
   ngOnInit(): void {
+  }
+
+  getCompany(id: string) {
+    this.apiService.get(`empresas/${id}`).subscribe((response) => {
+
+      if(response) {
+        this.form.controls['nombre_comercial'].setValue(response.nombre_comercial);
+        this.form.controls['razon_social'].setValue(response.razon_social);
+        this.form.controls['telefono'].setValue(response.telefono);
+        this.form.controls['nit'].setValue(response.nit);
+        this.form.controls['estado'].setValue(response.estado);
+        this.form.controls['direccion'].setValue(response.direccion);
+        this.form.controls['correo'].disable();
+        this.form.controls['correo'].setValue(response.correo);
+      }
+    }, error => {
+      console.log('ERROR AL OBTENER LA EMPRESA: ', error)
+    })
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -52,12 +78,21 @@ export class BusinessCreateEditComponent implements OnInit {
       });
       return;
     }else {
-      this.apiService.post('empresas', this.form.value).subscribe((response) => {
-        console.log('RESPONSE', response)
-        this.router.navigateByUrl('business');
-      }, error => {
-        console.log('ERROR AL CREAR LA EMPRESA: ', error)
-      })
+      if(this.companyId) {
+        this.apiService.put(`empresas/${this.companyId}`, this.form.value).subscribe((response) => {
+          console.log('RESPONSE', response)
+          this.router.navigateByUrl('business');
+        }, error => {
+          console.log('ERROR AL CREAR LA EMPRESA: ', error)
+        })
+      }else {
+        this.apiService.post('empresas', this.form.value).subscribe((response) => {
+          console.log('RESPONSE', response)
+          this.router.navigateByUrl('business');
+        }, error => {
+          console.log('ERROR AL CREAR LA EMPRESA: ', error)
+        })
+      }
     }
 
     console.log(JSON.stringify(this.form.value, null, 2));

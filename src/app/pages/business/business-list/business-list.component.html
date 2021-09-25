@@ -7,7 +7,7 @@
           <h6 class='text-left text-white m-0'>Agrega, edita o elimina</h6>
         </div>
         <div class="pr-1">
-          <button class="btn btn-primary font-weight-bold" (click)="gotToAddBussines()">Agregar</button>
+          <button class="btn btn-primary font-weight-bold" (click)="gotToAddBusiness()">Agregar</button>
         </div>
       </div>
     </div>
@@ -31,7 +31,17 @@
           <td>{{ company.nombre_comercial }}</td>
           <td>{{ company.correo }}</td>
           <td>{{ company.nit }}</td>
-          <td></td>
+          <td>
+            <div>
+              <button type="button" class="btn btn-default" (click)="goToEditBusiness(company.id)">
+                <i class="far fa-edit"></i>
+              </button>
+              <button type="button" class="btn btn-default">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
+
+          </td>
         </tr>
         </tbody>
       </table>
