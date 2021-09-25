@@ -31,4 +31,10 @@ export class ApiService {
 
     return this.httpClient.put(finalUrl, data, {headers: this.headers});
   }
+
+  public delete(url: string): Observable<any> {
+    const finalUrl = `${this.baseUrl}/${url}/`;
+
+    return this.httpClient.delete(finalUrl, {headers: this.headers});
+  }
 }
